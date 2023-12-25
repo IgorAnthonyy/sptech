@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="shortcut icon" href="./Design sem nome (1).png">
+    <link rel="stylesheet" href="./style.css">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>QuantumSens TECH - Calculadora</title>
+</head>
+<body>
+        
+    <div class="calculadora">
+        <div class="calculadora-box">
+            <div class="img">
+                <img src="./quantum (5).png" alt="">
+            </div>
+            <h2 class="titulo">Calculadora Financeira</h2>
+            <div class="calculadora-style">
+                <label>Informe quantos metros de plantio você tem:</label>
+                <input id="input_metros" class="ipt" placeholder="Digite a quantidade:"><br>
+            </div>
+            <div class="calculadora-style">
+                <label>Informe quanto vale KG da sua colheita:</label>
+                <input id="input_kg" class="ipt" placeholder="Digite o valor:"><br>
+            </div>
+            <div class="calculadora-style">
+                <label>Qual a pocentagem de perda que você tem em uma colheita de tabaco(kg):</label>
+            <input id="input_perdas" class="ipt" placeholder="Digite a porcentagem:"><br>
+            </div>
+            <div class="calculadora-style">
+                <button onclick="calcular()">Calcular</button>
+            <div id="mensagem"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function calcular(){
+        var valorColheita = Number(input_kg.value)
+        var qtdMetros = Number(input_metros.value)
+        var qtdDePlantasPorMetros = qtdMetros * 1.5
+        var qtdDeFolhas = qtdDePlantasPorMetros * 22
+        var qtsDeKilo = qtdDeFolhas * 0.012
+        var lucro = qtsDeKilo * valorColheita
+        var perdas = input_perdas.value / 100
+        var perdasValor  = lucro * perdas
+        var lucroComPerda = lucro - perdasValor
+        var comNossosSensores = perdas / 2
+        mensagem.innerHTML = `Você durante uma colheia você tem mais ou menos <strong> ${qtdDeFolhas} folhas colhidas</strong> . <br> <br>
+            Sendo <strong> ${qtsDeKilo}KG de folhas de tabacos </strong> <br><br>
+            Como a sua perda é de <strong> ${input_perdas.value}%,</strong> então seu lucro por colheita sera mais ou menos <strong> R$${lucroComPerda} </strong>, sem contar os gastos com mão de obra e maquinas.
+            <br><br> Com a utilização dos nossos sensores esse número poderiamos diminuir suas perdas <strong> pela metade</strong>, passando seu lucro para <strong> ${lucroComPerda * (1 + comNossosSensores)}</strong>.
+        `
+    }
+</script>
